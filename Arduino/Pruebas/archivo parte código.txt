@@ -1,0 +1,57 @@
+      lcd.setCursor(0,0);
+      lcd.print("RUN");
+      lcd.setCursor(6,0);
+      lcd.print("V:");
+      lcd.setCursor(8,0);
+      lcd.print(vel_n);
+      lcd.setCursor(12,0);
+      lcd.print("um/s");
+      lcd.setCursor(6,1);
+      lcd.print("P:");
+      lcd.setCursor(8,1);
+      lcd.print(pres_n);
+      lcd.setCursor(12,1);
+      lcd.print("mbar");
+
+    K = K_f();
+    tau_0 = tau_0_f(K);
+    G_prime = G_prime_f(K,tau_0);
+    G_2prime = G_2prime_f(K,tau_0);
+    // Se limpia la pantalla e imprimen los valores:
+    lcd.setCursor(0,0);
+    lcd.print("K:");
+    lcd.setCursor(0,4);
+    lcd.print(K);
+    lcd.setCursor(0,7);
+    lcd.print("T:");
+    lcd.setCursor(0,10);
+    lcd.print(tau_0);
+    lcd.setCursor(1,0);
+    lcd.print("G'");
+    lcd.setCursor(1,4);
+    lcd.print(G_prime);
+    lcd.setCursor(1,7);
+    lcd.print("G'':");
+    lcd.setCursor(1,11);
+    lcd.print(G_2prime); 
+
+    lcd.setCursor(0, 0); // Establecer la posición del cursor en la primera columna, primera fila
+    for (int i = 0; i < 16; i++) {
+      lcd.print(" ");
+    lcd.setCursor(0, 1); // Establecer la posición del cursor en la primera columna, primera fila
+    for (int i = 0; i < 16; i++) {
+      lcd.print(" ");   
+
+if (!condicion){ 
+lcd.setCursor(0,0);
+lcd.print("Offset Correction");
+for (int n=0; n<16; n++){
+  presion = 50;
+  //presion = map(analogRead(pinPresion), 0, 1023, 0, 2000); // ajuste de de presion en milibares directamente  
+  cum_pres += presion;
+  lcd.setCursor(n,1);
+  lcd.print("·");
+  Serial.println(n);
+}
+condicion = true;
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
